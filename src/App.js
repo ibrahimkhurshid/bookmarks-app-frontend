@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
+import Bookmarks from "./Bookmarks";
 
 function App() {
-  return (
-    <div>
-      App.js
-      <Link to="https://www.google.com">Google</Link>
-      <Link to="https://www.facebook.com">Facebook</Link>
-    </div>
-  );
+  return <Bookmarks />;
 }
 
 export default App;
