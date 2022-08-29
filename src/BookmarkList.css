@@ -1,8 +1,26 @@
 table {
     border-collapse: collapse;
-    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    max-height: 450px;
     table-layout: fixed;
-    max-height: 300px
+    overflow-y: scroll;
+    display: block;
+}
+
+table a:visited {
+    color: #333;
+}
+
+table a:active {
+    color: #333;
+}
+
+table a:link {
+    color: #333;
+}
+
+table a:hover {
+    color: #333;
 }
 
 caption {
