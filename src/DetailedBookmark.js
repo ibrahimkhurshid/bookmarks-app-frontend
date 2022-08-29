@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Bookmark from "./Bookmark";
 import { HOST } from "./env";
+import "./DetailedBookmark.css";
 
 const DetailedBookmark = () => {
   const [bookmark, setBookmark] = useState({

@@ -1,6 +1,7 @@
 import React from "react";
 import Bookmark from "./Bookmark";
 import { Link } from "react-router-dom";
+import "./BookmarkList.css";
 
 const BookmarkList = (props) => {
   const { list, deleteCallback } = props;
