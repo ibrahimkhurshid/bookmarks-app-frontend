@@ -15,6 +15,16 @@ const Bookmarks = () => {
   //     .catch((err) => console.log(err));
   // };
 
+  const searchBookmarks = (query) => {
+    api
+      .get(`${HOST}?query=${query}`)
+      .then((res) => {
+        console.log("Search API :", res.length);
+        setList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const getBookmarks = () => {
     api
       .get(HOST)

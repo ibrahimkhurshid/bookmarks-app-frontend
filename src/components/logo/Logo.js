@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { StyledNamedLogo } from "../../styled-components/StyledNamedLogo";
 
 const Logo = ({ name }) => {
   return (
     <StyledNamedLogo color="pink" href="/">
-      {name}
+      <Link to={"/"}>{name}</Link>
     </StyledNamedLogo>
   );
 };
