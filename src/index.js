@@ -4,6 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DetailedBookmark from "./components/detailedbookmark/DetailedBookmark";
+import Api from "./pages/Api";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -11,6 +12,10 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/:id" element={<DetailedBookmark />} />
+      <Route
+        path="/api"
+        element={<Api src="https://bookmarks-nestjs.herokuapp.com/api" />}
+      />
     </Routes>
   </BrowserRouter>
 );

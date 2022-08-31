@@ -3,7 +3,6 @@ import BookmarkList from "../bookmarklist/BookmarkList";
 import { HOST } from "../../env";
 import httpHelper from "../../helpers/httpHelper";
 import Input from "../input/Input";
-import "./Bookmarks.css";
 
 const Bookmarks = () => {
   const [list, setList] = useState([]);
@@ -31,7 +30,6 @@ const Bookmarks = () => {
       .post(HOST, { body: url })
       .then((res) => {
         getBookmarks();
-        // alert(res);
       })
       .catch((err) => console.log(err));
   };
@@ -39,7 +37,7 @@ const Bookmarks = () => {
   const deleteBookmark = (id) => {
     api
       .del(`${HOST}${id}`, {})
-      .then((res) => getBookmarks())
+      .then(() => getBookmarks())
       .catch((err) => console.log(err));
   };
 
@@ -55,7 +53,7 @@ const Bookmarks = () => {
   );
 
   return (
-    <div className="container">
+    <div>
       {list ? (
         <BookmarkList list={list} deleteCallback={deleteBookmark} />
       ) : (

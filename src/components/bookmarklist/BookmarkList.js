@@ -1,10 +1,10 @@
 import React from "react";
 import Bookmark from "../bookmark/Bookmark";
 import { Link } from "react-router-dom";
-import "./BookmarkList.css";
 import QRCodeStyling from "qr-code-styling";
 import { BiBarcodeReader } from "react-icons/bi";
 import Spinner from "../spinner/spinner";
+import { StyledTable } from "../../styled-components/StyledTable";
 
 const BookmarkList = (props) => {
   const { list, deleteCallback } = props;
@@ -51,7 +51,7 @@ const BookmarkList = (props) => {
   };
 
   return (
-    <table>
+    <StyledTable>
       <thead>
         <th>id</th>
         <th>url</th>
@@ -61,7 +61,7 @@ const BookmarkList = (props) => {
         <th>QR Code</th>
       </thead>
       {list.length > 0 ? <tbody>{genList(list)}</tbody> : <Spinner />}
-    </table>
+    </StyledTable>
   );
 };
 

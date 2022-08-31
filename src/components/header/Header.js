@@ -1,15 +1,18 @@
 import React from "react";
-import SearchBar from "../searchbar/SearchBar";
+import SearchBox from "../searchbar/SearchBox";
 import Logo from "../logo/Logo";
-import "./Header.css";
+import { StyledHeaderBar } from "../../styled-components/StyledHeaderBar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="header">
+    <StyledHeaderBar height="45px">
       <Logo name="Bookmarks" />
-      <nav>Header</nav>
-      <SearchBar />
-    </div>
+      <span>
+        <Link to="/api">API</Link>
+      </span>
+      <SearchBox />
+    </StyledHeaderBar>
   );
 };
 
