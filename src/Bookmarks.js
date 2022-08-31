@@ -43,14 +43,6 @@ const Bookmarks = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    getBookmarks();
-  }, []);
-
-  useEffect(() => {
-    getBookmarks();
-  }, []);
-
   useEffect(
     //set hard coded bookmarks
     // setList([
