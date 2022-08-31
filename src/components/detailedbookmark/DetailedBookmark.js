@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Bookmark from "./Bookmark";
-import { HOST } from "./env";
+import Bookmark from "../bookmark/Bookmark";
+import { HOST } from "../../env";
 import "./DetailedBookmark.css";
 
 const DetailedBookmark = () => {
@@ -18,7 +18,7 @@ const DetailedBookmark = () => {
     fetch(`${HOST}${params.id}`)
       .then((response) => response.json())
       .then((data) => {
-        //returns array of one object
+        //get the only object from array of one object
         setBookmark(data[0]);
       })
       .catch((err) => {

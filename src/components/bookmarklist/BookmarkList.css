@@ -5,6 +5,7 @@ table {
     table-layout: fixed;
     overflow-y: scroll;
     display: block;
+    max-width: 90%;
 }
 
 table a:visited {

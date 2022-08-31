@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import BookmarkList from "./BookmarkList";
-import { HOST } from "./env";
-import httpHelper from "./helpers/httpHelper";
-import Input from "./Input";
-import SearchBar from "./SearchBar";
+import BookmarkList from "../bookmarklist/BookmarkList";
+import { HOST } from "../../env";
+import httpHelper from "../../helpers/httpHelper";
+import Input from "../input/Input";
+import "./Bookmarks.css";
 
 const Bookmarks = () => {
   const [list, setList] = useState([]);
@@ -55,16 +55,14 @@ const Bookmarks = () => {
   );
 
   return (
-    <>
-      {console.log("Render", list.length)}
-      <SearchBar />
+    <div className="container">
       {list ? (
         <BookmarkList list={list} deleteCallback={deleteBookmark} />
       ) : (
-        <div>empty</div>
+        <></>
       )}
       <Input createCallback={postBookmark} update={getBookmarks} />
-    </>
+    </div>
   );
 };
 
