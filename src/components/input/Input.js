@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { StyledBookmarkInput } from "../../styled-components/StyledBookmarkInput";
 
 const Input = (props) => {
   const { createCallback, update } = props;
   const [text, setText] = useState(null);
 
   return (
-    <input
+    <StyledBookmarkInput
       onKeyUp={(e) => {
         if (e.key == "Enter") {
           createCallback({ url: e.target.value, title: text });
@@ -18,7 +19,7 @@ const Input = (props) => {
       }}
       type="text"
       placeholder="paste a link to bookmark"
-    ></input>
+    ></StyledBookmarkInput>
   );
 };
 

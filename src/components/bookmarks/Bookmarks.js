@@ -65,14 +65,14 @@ const Bookmarks = ({ pull }) => {
     []
   );
   return (
-    <div>
+    <>
       {list ? (
         <BookmarkList list={list} deleteCallback={deleteBookmark} />
       ) : (
         <></>
       )}
       <Input createCallback={postBookmark} update={getBookmarks} />
-    </div>
+    </>
   );
 };
 
