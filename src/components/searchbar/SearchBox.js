@@ -4,7 +4,7 @@ import { StyledInputContainer } from "../../styled-components/StyledInputContain
 import { AiOutlineSearch } from "react-icons/ai";
 import Icon from "../icons/icon";
 
-const SearchBox = () => {
+const SearchBox = ({ method }) => {
   return (
     <StyledInputContainer>
       <Icon
@@ -14,7 +14,17 @@ const SearchBox = () => {
         left="35px"
         size="1.5rem"
       ></Icon>
-      <StyledInput type="text" placeholder="Search bookmarks"></StyledInput>
+      <StyledInput
+        type="text"
+        placeholder="Search bookmarks"
+        onKeyDown={(e) => {
+          if (e.key == "Enter") {
+            method(e.target.value);
+          } else {
+            console.log("non enter");
+          }
+        }}
+      ></StyledInput>
     </StyledInputContainer>
   );
 };

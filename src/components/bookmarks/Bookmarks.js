@@ -4,9 +4,19 @@ import { HOST } from "../../env";
 import httpHelper from "../../helpers/httpHelper";
 import Input from "../input/Input";
 
-const Bookmarks = () => {
+const Bookmarks = ({ pull }) => {
   const [list, setList] = useState([]);
   const api = httpHelper();
+
+  const searchBookmarks = (query) => {
+    api
+      .get(`${HOST}search?url=${query}`)
+      .then((res) => {
+        console.log("Search API :", res.length);
+        setList(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   // const updateUser = (id, user) => {
   //   api
@@ -14,16 +24,6 @@ const Bookmarks = () => {
   //     .then((res) => getUsers())
   //     .catch((err) => console.log(err));
   // };
-
-  const searchBookmarks = (query) => {
-    api
-      .get(`${HOST}?query=${query}`)
-      .then((res) => {
-        console.log("Search API :", res.length);
-        setList(res);
-      })
-      .catch((err) => console.log(err));
-  };
 
   const getBookmarks = () => {
     api
@@ -58,10 +58,12 @@ const Bookmarks = () => {
     //   { id: 1, url: "http://google.com", title: "Google" },
     // ]);
 
-    () => getBookmarks(),
+    () => {
+      getBookmarks();
+      pull(searchBookmarks);
+    },
     []
   );
-
   return (
     <div>
       {list ? (
