@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Bookmark from "../bookmark/Bookmark";
 import { Link } from "react-router-dom";
 import { BiBarcodeReader } from "react-icons/bi";
-import Spinner from "../spinner/spinner";
+import SyncLoader from "react-spinners/SyncLoader";
 import { StyledTable } from "../../styled-components/StyledTable";
 import { DeleteButton } from "../../styled-components/DeleteButton";
 import Modal from "../modal/modal";
@@ -43,8 +43,6 @@ const BookmarkList = ({ list, deleteCallback }) => {
       );
     });
   };
-  console.log("loc", mouseLoc);
-  console.log("show", show);
 
   return (
     <StyledTable>
@@ -56,7 +54,13 @@ const BookmarkList = ({ list, deleteCallback }) => {
         <th>Delete</th>
         <th>QR Code</th>
       </thead>
-      {list.length > 0 ? <tbody>{genList(list)}</tbody> : <Spinner />}
+      {list.length > 0 ? (
+        <tbody>{genList(list)}</tbody>
+      ) : (
+        <div>
+          <SyncLoader />
+        </div>
+      )}
       <Modal
         isOpened={show}
         location={mouseLoc}

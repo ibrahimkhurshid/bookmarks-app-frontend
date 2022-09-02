@@ -21,14 +21,7 @@ export const StyledTable = styled.table`
   }
 
   a:hover {
-    color: #333;
-  }
-
-  caption {
-    font-weight: bold;
-    font-size: 24px;
-    text-align: center;
-    color: #333;
+    color: rgb(100, 100, 250);
   }
 
   thead {
@@ -47,15 +40,13 @@ export const StyledTable = styled.table`
 
   tr {
     color: rgb(100, 100, 100);
-    padding: 0px 2rem;
-    font-family: "helvetica", "sans-serif";
+    box-sizing: border-box;
     border-radius: 20px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     :hover {
       color: rgb(0, 0, 0);
-      font-family: "helvetica", "sans-serif";
+      /* font-family: "helvetica", "sans-serif"; */
       border-radius: 20px;
     }
   }

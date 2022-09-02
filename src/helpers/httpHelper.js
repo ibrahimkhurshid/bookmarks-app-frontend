@@ -1,5 +1,8 @@
-const httpHelper = () => {
-  const customFetch = async (url, options = {}) => {
+const httpHelper = (password) => {
+  const customFetch = async (
+    url,
+    options = { headers: { secret: password } }
+  ) => {
     const defaultMethod = "GET";
     const defaultHeaders = {
       "Content-Type": "application/json",

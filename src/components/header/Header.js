@@ -8,9 +8,7 @@ const Header = ({ method }) => {
   return (
     <StyledHeaderBar height="45px">
       <Logo name="Bookmarks" />
-      <span>
-        <Link to="/api">API</Link>
-      </span>
+      <Link to="/api">API</Link>
       <SearchBox wait={3000} method={method} />
     </StyledHeaderBar>
   );

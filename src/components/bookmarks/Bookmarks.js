@@ -4,8 +4,9 @@ import { HOST } from "../../env";
 import httpHelper from "../../helpers/httpHelper";
 import Input from "../input/Input";
 
-const Bookmarks = ({ pull }) => {
+const Bookmarks = ({ pull, secret, authSetter }) => {
   const [list, setList] = useState([]);
+
   const api = httpHelper();
 
   const searchBookmarks = (query) => {
@@ -14,8 +15,14 @@ const Bookmarks = ({ pull }) => {
       .then((res) => {
         console.log("Search API :", res.length);
         setList(res);
+        document.title = "bookmarks";
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if (err) {
+          authSetter(false);
+        }
+      });
   };
 
   // const updateUser = (id, user) => {
@@ -27,27 +34,46 @@ const Bookmarks = ({ pull }) => {
 
   const getBookmarks = () => {
     api
-      .get(HOST)
+      .get(HOST, { headers: { secret: secret } })
       .then((res) => {
         console.log("API :", res.length);
-        setList(res);
+        if (res.error === "Forbidden") {
+          authSetter(false);
+        } else {
+          setList(res);
+          authSetter(true);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const postBookmark = (url) => {
     api
-      .post(HOST, { body: url })
+      .post(HOST, { body: url, headers: { secret: secret } })
       .then((res) => {
-        getBookmarks();
+        if (res.error) {
+          authSetter(false);
+        } else {
+          authSetter(true);
+          getBookmarks();
+        }
       })
       .catch((err) => console.log(err));
   };
 
   const deleteBookmark = (id) => {
     api
-      .del(`${HOST}${id}`, {})
-      .then(() => getBookmarks())
+      .del(`${HOST}${id}`, { headers: { secret: secret } })
+      .then((res) => {
+        if (res.error) {
+          authSetter(false);
+        } else {
+          authSetter(true);
+          getBookmarks();
+        }
+      })
       .catch((err) => console.log(err));
   };
 
